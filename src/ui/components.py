@@ -1,16 +1,21 @@
 import streamlit as st
 import json
+from typing import Union, Dict, Any
 
-def display_results(results: str):
+def display_results(results: Union[str, Dict[str, Any]]):
     """
     Display analysis results in a formatted way.
     
     Args:
-        results: JSON string containing analysis results
+        results: Either a JSON string or a dictionary containing analysis results
     """
     try:
-        data = json.loads(results)
-        
+        # Convert string to dict if needed
+        if isinstance(results, str):
+            data = json.loads(results)
+        else:
+            data = results
+            
         # Display overall score
         st.subheader("Toxicity Analysis")
         st.metric(

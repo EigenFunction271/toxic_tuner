@@ -11,8 +11,7 @@ LLM-powered tool for grading message logs on toxic behavior, and generating a fo
 
 ## Stack
 - Frontend: Streamlit
-- OCR: pytesseract (local)
-- LLM: Gemini 2.0 Flash Lite
+- LLM: Gemini 2.0 Flash Lite (text + vision)
 - Storage: Local file system
 
 ## Input
@@ -69,6 +68,12 @@ Transcript:
 [formatted as "Speaker: Message"]
 ```
 
+## Image Processing Prompt
+```
+Extract the conversation text from this image. Format it as 'Speaker: Message' on each line. 
+Preserve the exact text, including any typos or formatting.
+```
+
 ## Sample Output Format
 
 ```
@@ -91,7 +96,7 @@ This person behaves like every emotionally unavailable team member who thinks gi
 ### Day 1
 - Streamlit UI setup
 - Local file handling for uploads
-- OCR integration (pytesseract)
+- Gemini vision integration
 - Basic input validation
 
 ### Day 2
@@ -109,7 +114,7 @@ This person behaves like every emotionally unavailable team member who thinks gi
 - Local file storage for uploads and recent analyses
 - Basic error handling and validation
 - Simple rate limiting via Streamlit session state
-- Minimal dependencies (streamlit, pytesseract, google-generativeai)
+- Minimal dependencies (streamlit, google-generativeai)
 
 ## Status
 Ready to build.

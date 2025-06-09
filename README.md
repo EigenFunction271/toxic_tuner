@@ -10,11 +10,18 @@ A Streamlit application that analyzes conversations for toxic behavior using Gem
 
 ## Setup
 
-### 1. Get Gemini API Key
+### 1. Set Up Gemini API
 1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
 2. Sign in with your Google account
-3. Click "Create API Key"
-4. Copy your new API key
+3. Enable the Gemini API:
+   - Go to [Google Cloud Console](https://console.cloud.google.com)
+   - Create a new project or select existing one
+   - Enable the "Gemini API" for your project
+   - Set up billing (required for API access)
+4. Create API Key:
+   - Go back to [Google AI Studio](https://makersuite.google.com/app/apikey)
+   - Click "Create API Key"
+   - Copy your new API key
 5. Keep this key secure and never commit it to version control
 
 ### 2. Install Dependencies
@@ -42,15 +49,22 @@ streamlit run app.py
 - `app.py`: Main Streamlit application
 - `src/`: Core application code
   - `llm/`: Gemini integration
-  - `utils/`: OCR and text processing
+  - `utils/`: Text processing utilities
   - `ui/`: Reusable UI components
 
 ## Troubleshooting
-- If you get an API key error, verify your `.env` file exists and contains the correct key
-- For OCR issues, ensure Tesseract is installed on your system:
-  - Windows: Download and install from [GitHub](https://github.com/UB-Mannheim/tesseract/wiki)
-  - Mac: `brew install tesseract`
-  - Linux: `sudo apt-get install tesseract-ocr`
+- If you get an API key error:
+  - Verify your `.env` file exists and contains the correct key
+  - Check that you've enabled the Gemini API in Google Cloud Console
+  - Ensure billing is set up for your Google Cloud project
+  - Try creating a new API key if issues persist
+- For image processing issues:
+  - Ensure your images are clear and well-lit
+  - Try reducing image size before upload
+- If the app is slow:
+  - Check your internet connection
+  - Reduce image size before upload
+  - Consider upgrading your Google Cloud quota if needed
 
 ## License
 MIT 
